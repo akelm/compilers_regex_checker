@@ -1,10 +1,10 @@
 import unittest
-
+import re
 from parameterized import parameterized
 
 from check_string import check_string
-from settings import *
 
+pattern = re.compile(r'^(11|00)((10*1?)|(01*0?))$')
 
 class TestParser(unittest.TestCase):
 
@@ -29,6 +29,6 @@ class TestParser(unittest.TestCase):
         '1',
         '1111111'
     ])
-    def test_works_as_expected(self, text):
+    def test_correctness(self, text: str):
         result = 'A' if re.match(pattern, text) else 'N'
-        self.assertEqual(result, check_string(text, states, alphabet), "text: %s " % text)
+        self.assertEqual(result, check_string(text), "text: %s " % text)

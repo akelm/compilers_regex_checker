@@ -12,4 +12,4 @@ states = [State(1, None, None, 'N'),
 
 alphabet = {'0', '1'}
 
-pattern = re.compile(r'^(11|00)((10*1?)|(01*0?))$')
+

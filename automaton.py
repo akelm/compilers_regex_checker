@@ -1,12 +1,12 @@
 from collections import defaultdict
-from typing import Set
 
-from state import State
 
+
+from settings import alphabet, states, State
 
 class Automaton:
-    def __init__(self, first: str, states_list, alphabet: Set[str]):
-        self._states_list = states_list
+    def __init__(self, first: str):
+        self._states_list = states
         self._on_input = defaultdict(lambda: State.on_other)
         if len(alphabet) < 2:
             raise "too short alphabet"
@@ -25,5 +25,5 @@ class Automaton:
             self._state_number = next_state_num
             return True
 
-    def check_accepting(self):
+    def check_accepting(self) -> str:
         return self._states_list[self._state_number].accepting
