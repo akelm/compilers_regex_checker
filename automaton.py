@@ -5,15 +5,13 @@ from collections import defaultdict
 from settings import alphabet, states, State
 
 class Automaton:
-    def __init__(self, first: str):
+    def __init__(self):
         self._states_list = states
         self._on_input = defaultdict(lambda: State.on_other)
         if len(alphabet) < 2:
             raise "too short alphabet"
-        if first in alphabet:
-            opposite = alphabet.difference({first}).pop()
-            self._on_input[first] = State.on_first
-            self._on_input[opposite] = State.on_opposite
+        self._on_input[alphabet[0]] = State.on_first
+        self._on_input[alphabet[1]] = State.on_opposite
         self._state_number = 0
 
     def new_state(self, x: str) -> bool:

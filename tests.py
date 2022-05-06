@@ -4,7 +4,7 @@ from parameterized import parameterized
 
 from check_string import check_string
 
-pattern = re.compile(r'^(11|00)((10*1?)|(01*0?))$')
+pattern = re.compile(r'^(aa|bb)a(b)*(a)?$')
 
 class TestParser(unittest.TestCase):
 
@@ -12,22 +12,22 @@ class TestParser(unittest.TestCase):
         '123',
         'ala ma kota',
         'i psa\n',
-        '111',
-        '000',
-        '001',
-        '001000',
-        '000',
-        '110',
-        '1110000',
-        '11100001',
-        '1111',
-        '11110',
-        '0111',
-        '111010101',
-        '0',
-        '1011',
-        '1',
-        '1111111'
+        'bbb',
+        'aaa',
+        'aab',
+        'aabaaa',
+        'aaa',
+        'bba',
+        'bbbaaaa',
+        'bbbaaaab',
+        'bbbb',
+        'bbbba',
+        'abbb',
+        'bbbababab',
+        'a',
+        'babb',
+        'b',
+        'bbbbbbb'
     ])
     def test_correctness(self, text: str):
         result = 'A' if re.match(pattern, text) else 'N'
